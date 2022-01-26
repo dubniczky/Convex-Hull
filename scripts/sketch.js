@@ -10,14 +10,16 @@ Click to add dots. Press R to reset. Press Space to add a random dot.
 const rad = (180.0 / Math.PI)
 const backgroundColor = `rgb(0, 0, 0)`
 const centerColor = `rgb(255, 204, 92)`
+const lineColor = 'rgb(20, 190, 190)'
+const pointColor = 'rgb(0, 0, 0)'
 const pointRadius = 15
 const descriptionSize = 18
 const pointSize = 12
 const lineWidth = 3
 
 // Variables
-let lineColor
-let pointColor
+let lineColorPE = null
+let pointColorPE = null
 let width = 800
 let height = 600
 let points = []
@@ -33,8 +35,8 @@ function setup() {
 
     //Setup rendering
     canvas = createCanvas(width, height)
-    lineColor = color(20, 190, 190)
-    pointColor = color(0, 0, 0)
+    lineColorPE = color(lineColor)
+    pointColorPE = color(pointColor)
     textSize(descriptionSize)
 
     //Setup objects
@@ -45,7 +47,7 @@ function draw() {
     background(color(backgroundColor))
 
     // Edges
-    stroke(lineColor)
+    stroke(lineColorPE)
     strokeWeight(lineWidth)
     if (edges != null) {
         let p1
@@ -104,7 +106,7 @@ function keyPressed() {
 //Methods
 function addDot(x, y) {
     const p = createVector(x, y)
-    points.push(new Point(p, pointColor, pointRadius))
+    points.push(new Point(p, pointColorPE, pointRadius))
 
     if (points.length >= 3) {
         center.pos = calculateCenter(points)
