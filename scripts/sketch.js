@@ -1,18 +1,19 @@
 'use strict'
 
+// Constants
 const rad = (180.0 / Math.PI)
+const centerColor = `rgb(255, 204, 92)`
+const pointRadius = 15
 
-var lineColor
-var pointColor
-
-var pointRadius = 15
-var width = 800
-var height = 600
-
-var points = []
-var center = {}
-var edges = null
-var ms = 0
+// Variables
+let lineColor
+let pointColor
+let width = 800
+let height = 600
+let points = []
+let center = {}
+let edges = null
+let hullTime = 0
 
 //Main
 function setup()
@@ -28,7 +29,7 @@ function setup()
     textSize(18)
 
     //Setup objects
-    center = new Point(null, color(200, 200, 40), 12)
+    center = new Point(null, color(centerColor), 12)
 }
 function draw()
 {
@@ -81,7 +82,7 @@ function draw()
         strokeWeight(1)
         stroke(0)
         fill(255)
-        text(`Hull time: ${ms}ms`, 0, 0, width, height)
+        text(`Hull time: ${hullTime / 1000.0}s`, 0, 0, width, height)
     }
 }
 
@@ -98,7 +99,7 @@ function mouseClicked(e)
 
         var time = new Date()
         edges = convexHull(points)
-        ms = new Date() - time
+        hullTime = new Date() - time
     }
     else
     {
