@@ -82,7 +82,7 @@ function draw()
         strokeWeight(1)
         stroke(0)
         fill(255)
-        text(`Hull time: ${hullTime / 1000.0}s`, 0, 0, width, height)
+        text(`Hull time: ${hullTime.toFixed(1)}ms`, 0, 0, width, height)
     }
 }
 
@@ -97,9 +97,9 @@ function mouseClicked(e)
     {
         center.pos = calculateCenter(points)
 
-        var time = new Date()
+        let time = performance.now()
         edges = convexHull(points)
-        hullTime = new Date() - time
+        hullTime = performance.now() - time
     }
     else
     {
