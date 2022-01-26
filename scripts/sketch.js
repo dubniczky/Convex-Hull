@@ -3,9 +3,9 @@
 // Constants
 const description = 
 `
-Convex hull is an algorithm to connect the border dots in a 2D space.
-This solution uses optimized trigonometry to achieve high efficiency.
-Click to add dot and calculate hull when over 3 points. Press r to reset.
+Convex hull is an algorithm to connect the bordering dots in an nD space.
+This solution uses trigonometric elimination to achieve higher efficiency.
+Click to add dots. Press R to reset. Press Space to add a random dot.
 `
 const rad = (180.0 / Math.PI)
 const backgroundColor = `rgb(0, 0, 0)`
@@ -34,7 +34,7 @@ function setup() {
     //Setup rendering
     canvas = createCanvas(width, height)
     lineColor = color(20, 190, 190)
-    pointColor = color(255, 255, 255)
+    pointColor = color(0, 0, 0)
     textSize(descriptionSize)
 
     //Setup objects
@@ -88,7 +88,22 @@ function draw() {
 
 //Events
 function mouseClicked(e) {
-    const p = createVector(e.clientX, e.clientY)
+    addDot(e.clientX, e.clientY)
+}
+function keyPressed() {
+    switch (keyCode) {
+        case 32: //Space
+            addRandom()
+            break
+        case 82: //R
+            reset()
+            break
+    }
+}
+
+//Methods
+function addDot(x, y) {
+    const p = createVector(x, y)
     points.push(new Point(p, pointColor, pointRadius))
 
     if (points.length >= 3) {
@@ -103,35 +118,28 @@ function mouseClicked(e) {
         edges = null
     }
 }
-function keyPressed() {
-    switch (keyCode) {
-        case 32: //Space
-            
-            break
-        case 82: //R
-            reset()
-            break
-    }
-}
-
-//Methods
 function reset() {
     points = []
     edges = null   
     center.pos = null
 }
+function addRandom() {
+    let x = Math.floor( Math.random() * width)
+    let y = Math.floor( Math.random() * height)
+    addDot(x, y)
+}
 function calculateCenter(points) {
-    let plen = points.length
+    let n = points.length
     let avgX = 0
     let avgY = 0
 
-    for (let i = 0; i < plen; i++) {
+    for (let i = 0; i < n; i++) {
         avgX += points[i].pos.x
         avgY += points[i].pos.y
     }
 
-    avgX /= plen
-    avgY /= plen
+    avgX /= n
+    avgY /= n
 
     return createVector(avgX, avgY)
 }
