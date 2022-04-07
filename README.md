@@ -2,6 +2,8 @@
 
 Optimizing a convex hull using trigonometric elimination.
 
+[[_TOC_]]
+
 ## Live Demo
 
 https://richardnagy.gitlab.io/webprojects/trigonometric-convex-hull/
