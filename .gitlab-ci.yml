@@ -1,0 +1,15 @@
+stages:
+  - deploy
+
+pages:
+  stage: deploy
+  only:
+    - main
+  artifacts:
+    paths:
+      - public
+  script:
+    # Add run premission to deploy script
+    - chmod +x ./deploy.sh
+    # Run deploy script
+    - ./deploy.sh
