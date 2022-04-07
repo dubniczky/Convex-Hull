@@ -55,4 +55,6 @@ for (let i = points.length - 1; i >= 0; i--) {
 
 ## Usage
 
-Host the project on a static file server or open `index.html` locally.
+Run the `./deploy.sh` script.
+
+Host `./public` folder on a static file server or open `./public/index.html` locally in your browser.
