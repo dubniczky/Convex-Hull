@@ -10,7 +10,7 @@ If you find the project useful, please consider supporting, or contributing.
 
 ## Live Demo
 
-https://richardnagy.gitlab.io/webprojects/trigonometric-convex-hull/
+https://dubniczky.github.io/Convex-Hull/
 
 ## Algorithm details
 
