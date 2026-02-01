@@ -2,10 +2,6 @@
 
 Optimizing a convex hull using trigonometric elimination.
 
-## Live Demo
-
-https://dubniczky.github.io/Convex-Hull/
-
 ## Algorithm details
 
 1. Calculate center point from average positions.
